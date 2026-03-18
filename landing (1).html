@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Tiara Media — KOL Invoice</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Sarabun',sans-serif;
+  background:#0a0a0a;color:#f8f8f6;
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:48px 24px;position:relative;overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.03) 80px),
+    repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.03) 80px);
+  pointer-events:none;
+}
+.inner{max-width:560px;width:100%;text-align:center;z-index:1;}
+
+.mark{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:68px;height:68px;border:1.5px solid rgba(255,255,255,.25);
+  margin-bottom:28px;animation:revl .8s ease forwards;
+}
+.mark span{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#f8f8f6;line-height:1;}
+@keyframes revl{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+
+.tag{font-size:10px;letter-spacing:.25em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:18px;animation:up .6s .2s ease both;}
+.title{font-family:'Playfair Display',serif;font-size:clamp(38px,8vw,72px);font-weight:700;line-height:1.05;margin-bottom:14px;animation:up .6s .3s ease both;}
+.title em{font-style:italic;color:rgba(255,255,255,.5);}
+.sub{font-size:14px;color:rgba(255,255,255,.4);line-height:1.9;margin-bottom:44px;animation:up .6s .4s ease both;}
+
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  background:#f8f8f6;color:#0a0a0a;
+  padding:16px 40px;border:none;cursor:pointer;
+  font-family:'Sarabun',sans-serif;font-size:14px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  transition:all .2s;animation:up .6s .5s ease both;
+  text-decoration:none;
+}
+.btn:hover{background:#e0e0de;transform:translateY(-2px);}
+.btn svg{width:16px;height:16px;flex-shrink:0;}
+
+.divider{width:1px;height:52px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.2),transparent);margin:44px auto;animation:up .6s .6s ease both;}
+
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);animation:up .6s .7s ease both;}
+.feat{background:#0a0a0a;padding:22px 14px;text-align:center;}
+.feat-icon{font-size:22px;margin-bottom:8px;}
+.feat-label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.05em;line-height:1.6;}
+
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:400px){
+  .feats{grid-template-columns:1fr;}
+  .btn{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+<div class="inner">
+  <div class="mark"><span>T</span></div>
+  <p class="tag">Tiara Media (Thailand) Co., Ltd.</p>
+  <h1 class="title">KOL <em>Invoice</em></h1>
+  <p class="sub">สร้างใบแจ้งหนี้สำหรับ KOL อย่างมืออาชีพ<br>กรอกข้อมูล · พรีวิว · ดาวน์โหลด PDF</p>
+  <a class="btn" href="index.html" target="_blank" rel="noopener">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
+    เริ่มสร้างใบแจ้งหนี้
+  </a>
+  <div class="divider"></div>
+  <div class="feats">
+    <div class="feat"><div class="feat-icon">📋</div><div class="feat-label">กรอกข้อมูล<br>KOL ครบครัน</div></div>
+    <div class="feat"><div class="feat-icon">👁️</div><div class="feat-label">พรีวิวแบบ<br>Real-time</div></div>
+    <div class="feat"><div class="feat-icon">⬇️</div><div class="feat-label">ดาวน์โหลด<br>PDF ทันที</div></div>
+  </div>
+</div>
+</body>
+</html>
