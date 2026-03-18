@@ -33,13 +33,13 @@ body::before{
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:12px;
   background:#f8f8f6;color:#0a0a0a;
-  padding:16px 40px;border:none;cursor:pointer;
+  padding:16px 40px;width:100%;max-width:320px;
+  border:none;cursor:pointer;
   font-family:'Sarabun',sans-serif;font-size:14px;font-weight:700;
   letter-spacing:.1em;text-transform:uppercase;
   transition:all .2s;animation:up .6s .5s ease both;
-  text-decoration:none;width:100%;max-width:320px;
 }
-.btn:hover{background:#e0e0de;}
+.btn:active{opacity:.85;}
 .btn svg{width:16px;height:16px;flex-shrink:0;}
 .divider{width:1px;height:52px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.2),transparent);margin:44px auto;animation:up .6s .6s ease both;}
 .feats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);animation:up .6s .7s ease both;}
@@ -47,21 +47,6 @@ body::before{
 .feat-icon{font-size:22px;margin-bottom:8px;}
 .feat-label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.05em;line-height:1.6;}
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-
-/* LINE browser warning */
-.line-warn{
-  display:none;
-  background:#fff8e1;border:1.5px solid #ffc107;border-radius:12px;
-  padding:16px;margin-bottom:20px;text-align:left;animation:up .4s ease both;
-}
-.line-warn-title{font-size:.9rem;font-weight:700;color:#7a5c00;margin-bottom:6px;}
-.line-warn-body{font-size:.8rem;color:#7a5c00;line-height:1.6;margin-bottom:12px;}
-.line-warn-btn{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  width:100%;padding:12px;border-radius:8px;border:none;
-  background:#f0c040;color:#1a1a2e;font-family:'Sarabun',sans-serif;
-  font-size:.85rem;font-weight:700;cursor:pointer;
-}
 </style>
 </head>
 <body>
@@ -71,17 +56,10 @@ body::before{
   <h1 class="title">KOL <em>Invoice</em></h1>
   <p class="sub">สร้างใบแจ้งหนี้สำหรับ KOL อย่างมืออาชีพ<br>กรอกข้อมูล · พรีวิว · ดาวน์โหลด PDF</p>
 
-  <!-- LINE browser warning (shown only in LINE) -->
-  <div class="line-warn" id="lineWarn">
-    <div class="line-warn-title">⚠️ เปิดผ่าน LINE Browser</div>
-    <div class="line-warn-body">กรุณากด ··· มุมขวาบน แล้วเลือก "เปิดใน Browser" เพื่อใช้งานได้เต็มที่ค่ะ</div>
-    <button class="line-warn-btn" onclick="openInBrowser()">🌐 เปิดใน Safari / Chrome</button>
-  </div>
-
-  <a class="btn" id="mainBtn" href="index.html" target="_blank" rel="noopener noreferrer">
+  <button class="btn" onclick="goToInvoice()">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
     เริ่มสร้างใบแจ้งหนี้
-  </a>
+  </button>
 
   <div class="divider"></div>
   <div class="feats">
@@ -92,31 +70,35 @@ body::before{
 </div>
 
 <script>
-var invoiceUrl = 'https://tiarathailand.github.io/tiara-invoice/index.html';
+function goToInvoice(){
+  // URL ของ index.html (ฟอร์มหลัก) — อยู่ใน folder เดียวกัน
+  var url = window.location.href.replace('landing.html','index.html');
+  var ua  = navigator.userAgent;
+  var isIOS     = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+  var isAndroid = /Android/.test(ua);
 
-function isLineBrowser(){
-  return /Line\//i.test(navigator.userAgent);
-}
+  if(isAndroid){
+    // Android — บังคับเปิด Chrome ด้วย intent://
+    var intentUrl = 'intent://' + url.replace(/^https?:\/\//,'') +
+      '#Intent;scheme=https;package=com.android.chrome;end';
+    window.location.href = intentUrl;
+    setTimeout(function(){ window.location.href = url; }, 1500);
 
-function openInBrowser(){
-  // iOS: ใช้ x-safari scheme
-  if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){
-    location.href = 'x-safari-' + invoiceUrl;
-    setTimeout(function(){ location.href = invoiceUrl; }, 500);
+  } else if(isIOS){
+    // iOS — เปิด Safari โดยตรง
+    window.location.href = 'x-web-search://?';
+    setTimeout(function(){
+      window.open(url, '_blank');
+      setTimeout(function(){
+        alert('กด ··· มุมขวาล่าง แล้วเลือก "เปิดใน Safari" ค่ะ');
+      }, 500);
+    }, 500);
+
   } else {
-    location.href = invoiceUrl;
+    // Desktop — ไปหน้าเดิมได้เลย ไม่ต้อง popup
+    window.location.href = url;
   }
 }
-
-window.addEventListener('DOMContentLoaded', function(){
-  if(isLineBrowser()){
-    document.getElementById('lineWarn').style.display = 'block';
-    // ปุ่มหลัก → เปลี่ยนเป็น openInBrowser แทน
-    var btn = document.getElementById('mainBtn');
-    btn.removeAttribute('href');
-    btn.setAttribute('onclick', 'openInBrowser()');
-  }
-});
 </script>
 </body>
 </html>
