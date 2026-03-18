@@ -85,14 +85,8 @@ function goToInvoice(){
     setTimeout(function(){ window.location.href = url; }, 1500);
 
   } else if(isIOS){
-    // iOS — เปิด Safari โดยตรง
-    window.location.href = 'x-web-search://?';
-    setTimeout(function(){
-      window.open(url, '_blank');
-      setTimeout(function(){
-        alert('กด ··· มุมขวาล่าง แล้วเลือก "เปิดใน Safari" ค่ะ');
-      }, 500);
-    }, 500);
+    // iOS — ไปหน้า index.html ตรงๆ Safari จะเปิดเอง
+    window.location.href = url;
 
   } else {
     // Desktop — ไปหน้าเดิมได้เลย ไม่ต้อง popup
