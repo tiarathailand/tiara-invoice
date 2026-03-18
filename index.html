@@ -905,75 +905,9 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
 .pdf-modal-confirm{flex:2;padding:10px;border:none;border-radius:8px;background:#4a90d9;font-family:Sarabun,sans-serif;font-size:.82rem;font-weight:700;color:#fff;cursor:pointer}
 .pdf-modal-confirm:hover{background:#3a80c9}
 
-/* ── LANDING PAGE ── */
-#landing{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  min-height:100vh;background:#0a0a0a;color:#f8f8f6;
-  padding:48px 24px;position:relative;overflow:hidden;
-  font-family:'Sarabun',sans-serif;
-}
-#landing::before{
-  content:'';position:absolute;inset:0;
-  background:
-    repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.03) 80px),
-    repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.03) 80px);
-  pointer-events:none;
-}
-.ld-inner{max-width:560px;width:100%;text-align:center;z-index:1;}
-.ld-mark{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:68px;height:68px;border:1.5px solid rgba(255,255,255,.25);
-  margin-bottom:28px;animation:ldReveal .8s ease forwards;
-}
-.ld-mark span{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#f8f8f6;line-height:1;}
-@keyframes ldReveal{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
-.ld-tag{font-size:10px;letter-spacing:.25em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:18px;animation:ldUp .6s .2s ease both;}
-.ld-title{font-family:'Playfair Display',serif;font-size:clamp(38px,8vw,72px);font-weight:700;line-height:1.05;margin-bottom:14px;animation:ldUp .6s .3s ease both;}
-.ld-title em{font-style:italic;color:rgba(255,255,255,.55);}
-.ld-sub{font-size:14px;color:rgba(255,255,255,.45);line-height:1.9;margin-bottom:44px;animation:ldUp .6s .4s ease both;}
-.ld-btn{
-  display:inline-flex;align-items:center;gap:12px;
-  background:#f8f8f6;color:#0a0a0a;
-  padding:16px 40px;border:none;cursor:pointer;
-  font-family:'Sarabun',sans-serif;font-size:14px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  transition:all .2s;animation:ldUp .6s .5s ease both;
-}
-.ld-btn:hover{background:#e0e0de;transform:translateY(-2px);}
-.ld-btn svg{width:16px;height:16px;flex-shrink:0;}
-.ld-divider{width:1px;height:52px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.2),transparent);margin:44px auto;animation:ldUp .6s .6s ease both;}
-.ld-feats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);animation:ldUp .6s .7s ease both;}
-.ld-feat{background:#0a0a0a;padding:22px 14px;text-align:center;}
-.ld-feat-icon{font-size:22px;margin-bottom:8px;}
-.ld-feat-label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.05em;line-height:1.6;}
-@keyframes ldUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-#appWrap{display:none;}
 </style>
 </head>
 <body>
-
-<!-- LANDING PAGE -->
-<section id="landing">
-  <div class="ld-inner">
-    <div class="ld-mark"><span>T</span></div>
-    <p class="ld-tag">Tiara Media (Thailand) Co., Ltd.</p>
-    <h1 class="ld-title">KOL <em>Invoice</em></h1>
-    <p class="ld-sub">สร้างใบแจ้งหนี้สำหรับ KOL อย่างมืออาชีพ<br>กรอกข้อมูล · พรีวิว · ดาวน์โหลด PDF</p>
-    <button class="ld-btn" onclick="startApp()">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
-      เริ่มสร้างใบแจ้งหนี้
-    </button>
-    <div class="ld-divider"></div>
-    <div class="ld-feats">
-      <div class="ld-feat"><div class="ld-feat-icon">📋</div><div class="ld-feat-label">กรอกข้อมูล<br>KOL ครบครัน</div></div>
-      <div class="ld-feat"><div class="ld-feat-icon">👁️</div><div class="ld-feat-label">พรีวิวแบบ<br>Real-time</div></div>
-      <div class="ld-feat"><div class="ld-feat-icon">⬇️</div><div class="ld-feat-label">ดาวน์โหลด<br>PDF ทันที</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- APP (hidden until landing CTA clicked) -->
-<div id="appWrap">
 <div class="ov" id="ov"><div class="spin"></div><div style="font-size:.9rem;font-weight:600" id="ovMsg">กำลังสร้าง PDF...</div></div>
 <div class="done-screen" id="doneScreen">
   <div class="done-box">
@@ -1059,7 +993,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
 <div class="picker-bar">
   <div class="picker-inner">
     <div class="picker-top">
-      <div class="picker-logo">🧾 ใบแจ้งหนี้ Tiara Media KOL <span>กรอกข้อมูล &#8594; พรีวิว &#8594; บันทึก PDF</span></div>
+      <div class="picker-logo">🧾 ใบแจ้งหนี้ Tiara Media KOL <span>กรอกข้อมูล &#8594; เลือกแบบ &#8594; บันทึก PDF</span></div>
       <div class="picker-actions" id="topActions">
         <button class="btn-act" id="btnNextToTemplate" onclick="goToStep(2)" style="background:#4a90d9;color:#fff">ถัดไป: เลือกแบบ →</button>
       </div>
@@ -1234,7 +1168,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
 </div>
 
 <script>
-const CO={name:'บริษัท เทียร่า มีเดีย (ไทยแลนด์) จำกัด',addr:'(สำนักงานใหญ่) 62 หมู่บ้าน พระปิ่น 3 หมู่ที่ 12 ตำบลบางแม่นาง อำเภอบางใหญ่ จ.นนทบุรี 11140',tax:'0105567250702'};
+const CO={name:'บริษัท เทียร่า มีเดีย (ไทยแลนด์) จำกัด (สำนักงานใหญ่)',addr:'62 หมู่บ้าน พระปิ่น 3 หมู่ที่ 12 ตำบลบางแม่นาง อำเภอบางใหญ่ จ.นนทบุรี 11140',tax:'0105567250702'};
 const TPLS=[
   {id:'t1',name:'Classic Centered',desc:'หัวข้อกลาง / แถบสีเข้ม'},
   {id:'t2',name:'Red Stripe Bold',desc:'แถบแนวตั้ง / พื้นขาว-ชมพู'},
@@ -2548,14 +2482,12 @@ function handleOtherSelect(selId, inputId){
   document.getElementById('invDate').value=today;
   var due=new Date(); due.setDate(due.getDate()+60);
   document.getElementById('invDue').value=due.toISOString().split('T')[0];
-  var g=document.getElementById('tplGrid');
-  // Tiara Media: ใช้ t4 เพียงแบบเดียว ซ่อน template picker
+  // Tiara Media: lock to t4 only
   currentTpl='t4';
-  var tplPanel=document.getElementById('step2Panel');
-  // ซ่อน grid การเลือก template
-  if(g) g.style.display='none';
-  var gridLabel=document.querySelector('.picker-grid-label');
-  if(gridLabel) gridLabel.style.display='none';
+  var g=document.getElementById('tplGrid');
+  if(g){ g.style.display='none'; }
+  var gl=document.querySelector('.picker-grid-label');
+  if(gl){ gl.style.display='none'; }
   addRow(); addRow();
   setTimeout(initSigCanvas,300);
   calcTotal(); renderInvoice();
@@ -2588,13 +2520,5 @@ function handleOtherSelect(selId, inputId){
   pointer-events:none;z-index:-1;
 "></div>
 
-</div><!-- /appWrap -->
-
-<script>
-function startApp(){
-  document.getElementById('landing').style.display='none';
-  document.getElementById('appWrap').style.display='block';
-}
-</script>
 </body>
 </html>
