@@ -995,7 +995,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
     <div class="picker-top">
       <div class="picker-logo">🧾 ใบแจ้งหนี้ Tiara Media KOL <span>กรอกข้อมูล &#8594; เลือกแบบ &#8594; บันทึก PDF</span></div>
       <div class="picker-actions" id="topActions">
-        <button class="btn-act" id="btnNextToTemplate" onclick="goToStep(2)" style="background:#4a90d9;color:#fff">ถัดไป: เลือกแบบ →</button>
+        <button class="btn-act" id="btnNextToTemplate" onclick="goToStep(2)" style="background:#4a90d9;color:#fff">ถัดไป: พรีวิว →</button>
       </div>
     </div>
     <div id="stepBar" style="display:flex;align-items:center;gap:8px;margin-top:8px">
@@ -1907,7 +1907,7 @@ function goToStep(n){
     mainWrap.style.display='grid'; step2Panel.style.display='none';
     if(step2Prev) step2Prev.style.display='none';
     btnNext.style.display='inline-flex';
-    if(mobNav) mobNav.innerHTML='<button class="mob-nav-btn mob-nav-next" onclick="goToStep(2)">ถัดไป: เลือกแบบ →</button>';
+    if(mobNav) mobNav.innerHTML='<button class="mob-nav-btn mob-nav-next" onclick="goToStep(2)">ถัดไป: พรีวิว →</button>';
     if(s1){ s1.style.color='#f0c040'; s1.querySelector('div').style.background='#f0c040'; s1.querySelector('div').style.color='#1a1a2e'; }
     if(s2){ s2.style.color='rgba(255,255,255,.35)'; }
     if(s2c){ s2c.style.background='rgba(255,255,255,.15)'; s2c.style.color='rgba(255,255,255,.4)'; }
@@ -2495,7 +2495,7 @@ function handleOtherSelect(selId, inputId){
 </script>
 
 <div class="mob-nav" id="mobNav">
-  <button class="mob-nav-btn mob-nav-next" onclick="goToStep(2)">ถัดไป: เลือกแบบ →</button>
+  <button class="mob-nav-btn mob-nav-next" onclick="goToStep(2)">ถัดไป: พรีวิว →</button>
 </div>
 
 <!-- iOS PDF Viewer Overlay -->
